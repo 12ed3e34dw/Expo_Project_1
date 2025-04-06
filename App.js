@@ -1,4 +1,15 @@
-import {StyleSheet, Text, View, StatusBar, SafeAreaView, Image, Button, Alert} from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    StatusBar,
+    SafeAreaView,
+    Image,
+    Button,
+    Alert,
+
+    Pressable
+} from 'react-native';
 import {StatusBar as StatusBarExpo} from 'expo-status-bar';
 import styled from 'styled-components/native'
 import {useState} from "react";
@@ -248,58 +259,68 @@ import {useState} from "react";
 
 //11
 
+import React from 'react';
+
+
 export default function App() {
+    const [isPressed, setIsPressed] = useState(false);
     const handlePress = () => {
-        Alert.alert('Кнопка нажата!');
+        setIsPressed(!isPressed);
     };
+
     return (
-       <View style={styles.container}>
-
-           <View style={styles.container_Main}>
-
-              <Text style={styles.text}>Rembo</Text>
-                 <Text style={styles.text_1}>Last Blaod</Text>
-               <View style={styles.button}>
-                   <Button title="Нажми меня" onPress={handlePress} />
-               </View>
-
-           </View>
-       </View>
-
-    )
+        <View style={styles.container}>
+            <View style={styles.container_Main}>
+                <Image source={require('./Img/Снимок экрана 2025-04-04 235023.png')} style={{width: 60, height: 55, borderRadius: 10, top: -5,}}/>
+                <Text style={styles.text}>Rembo</Text>
+                <Text style={styles.text_1}>Last Blood</Text>
+                <View style={styles.button}>
+                    <Button title="Subscribe" onPress={handlePress} color={isPressed ? 'red' : 'dodgerblue'}/>
+                </View>
+            </View>
+        </View>
+    );
 }
-//
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'#f2f2f2',
+        backgroundColor: '#f2f2f2',
     },
-   container_Main: {
-        top:-280,
+    container_Main: {
+        top: -280,
         width: 370,
         height: 70,
-       borderRadius: 8,
-       backgroundColor:'white',
-
-   },
+        borderRadius: 8,
+        backgroundColor: 'white',
+        shadowColor: 'red',
+        shadowOffset: { width: 0, height: 13 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 5,
+        padding: 10,
+    },
     text: {
-        left:70,
-        top:10,
+        top: -55,
+        marginLeft: 70,
+        marginTop: 5,
+        fontSize: 15,
     },
     text_1: {
-        color:'gray',
+        top: -55,
+        color: 'gray',
         fontSize: 12,
-        left:70,
-        top:13,
+        marginLeft: 70,
     },
-button: {
-    flex: 1,
-    top:-20,
-    left:118,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 20,
-}
-})
+    button: {
+        position: 'absolute',
+        right: 10,
+        top: 15,
+        borderRadius: 20,
+        overflow: 'hidden',
+    },
+});
+
+

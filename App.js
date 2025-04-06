@@ -266,6 +266,7 @@ export default function App() {
     const [isPressed, setIsPressed] = useState(false);
     const handlePress = () => {
         setIsPressed(!isPressed);
+
     };
 
     return (
@@ -275,7 +276,7 @@ export default function App() {
                 <Text style={styles.text}>Rembo</Text>
                 <Text style={styles.text_1}>Last Blood</Text>
                 <View style={styles.button}>
-                    <Button title="Subscribe" onPress={handlePress} color={isPressed ? 'red' : 'dodgerblue'}/>
+                    <Button title={isPressed ? "Unsubscribe" : "Subscribe"} onPress={handlePress} color={isPressed ? 'red' : 'dodgerblue'}/>
                 </View>
             </View>
         </View>
